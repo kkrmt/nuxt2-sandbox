@@ -62,6 +62,7 @@ class Auth0Util {
   }
 }
 
+// eslint-disable-line no-unused-vars
 export default (context, inject) => {
   inject('auth0', new Auth0Util())
 }
