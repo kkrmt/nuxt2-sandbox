@@ -1,15 +1,9 @@
 import Auth0Lock from 'auth0-lock'
-import nuxtConfig from '~/nuxt.config'
 import jwtDecode from "jwt-decode";
 import queryString from "query-string";
 
 class Auth0Util {
   showLock(container, config) {
-    // eslint-disable-next-line no-console
-    console.log("1", config.domain);
-    // eslint-disable-next-line no-console
-    console.log("2", config.clientID);
-
     const lock = new Auth0Lock(config.clientID, config.domain, {
       container,
       closable: false,
