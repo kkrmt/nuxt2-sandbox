@@ -67,5 +67,13 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-  }
+  },
+
+  // 環境変数
+  publicRuntimeConfig: {
+    auth0: {
+      domain: process.env.DOMAIN || 'xxx',
+      clientID: process.env.CLIENT_ID || 'xxx',
+    },
+  },
 }
