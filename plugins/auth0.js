@@ -27,6 +27,7 @@ class Auth0Util {
     return queryString.parse(location.hash);
   }
 
+  // eslint-disable-next-line camelcase
   setToken({access_token, id_token, expires_in}) {
     // eslint-disable-next-line no-console
     console.log("1", { access_token });
@@ -37,6 +38,7 @@ class Auth0Util {
     const localStorage = window.localStorage;
     localStorage.setItem('accessToken', access_token);
     localStorage.setItem('idToken', id_token);
+    // eslint-disable-next-line camelcase
     localStorage.setItem('expiresAt', expires_in * 1000 + new Date().getTime());
     localStorage.setItem('user', JSON.stringify(jwtDecode(id_token)));
   }
