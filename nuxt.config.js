@@ -1,6 +1,6 @@
 import colors from 'vuetify/es5/util/colors'
 
-export default {
+const config = {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: false,
 
@@ -23,8 +23,7 @@ export default {
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [
-  ],
+  css: [],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
@@ -44,7 +43,12 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
+    '@nuxtjs/axios',
+    '@nuxtjs/proxy',
   ],
+  axios: {
+    baseUrl: '/'
+  },
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
@@ -77,3 +81,11 @@ export default {
     },
   },
 }
+
+if (process.env.NODE_ENV === 'development') {
+  config.proxy = {
+    '/api': 'http://localhost:3000'
+  }
+}
+
+module.exports = config;

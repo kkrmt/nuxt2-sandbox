@@ -23,6 +23,7 @@
             ログイン
           </span>
         </nuxt-link>
+        <button @click='ping'>ping</button>
       </div>
     </div>
   </section>
@@ -33,6 +34,10 @@ export default {
   methods: {
     loggedIn() {
       return this.$auth0.isAuthenticated();
+    },
+    async ping() {
+      const ret = await this.$axios.$get('/api/v1/ping')
+      console.log({ret});
     }
   }
 }
