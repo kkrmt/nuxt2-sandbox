@@ -60,6 +60,9 @@ class Auth0Util {
     const expiresAt = window.localStorage.getItem('expiresAt');
     return new Date().getTime() < expiresAt;
   }
+
+  // 取得したトークンを使う
+  getIdToken = () => this.isAuthenticated() ? localStorage.getItem('idToken') : null;
 }
 
 // eslint-disable-line no-unused-vars

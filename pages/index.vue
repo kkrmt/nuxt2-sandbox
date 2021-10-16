@@ -11,6 +11,8 @@
             ログアウト
           </span>
         </nuxt-link>
+        <button @click='ping'>ping</button>
+        <button @click='secured'>secured</button>
       </div>
 
       <div v-if='!loggedIn()' class='content'>
@@ -24,6 +26,7 @@
           </span>
         </nuxt-link>
         <button @click='ping'>ping</button>
+        <button @click='secured'>secured</button>
       </div>
     </div>
   </section>
@@ -38,6 +41,11 @@ export default {
     async ping() {
       const ret = await this.$axios.$get('/api/v1/ping')
       console.log({ret});
+    },
+    async secured() {
+      console.log("click secured!!!");
+      const res = await this.$axios.$get('/api/v1/secured', { headers: { Authorization: 'Bearer ' + this.$auth0.getIdToken() }});
+      console.log({res});
     }
   }
 }
